@@ -1,0 +1,5 @@
+# Runtime packages for the phases built so far (0 to 4d). Python 3.12.
+# Everything else used (sqlite3 with FTS5, tomllib, urllib, unittest) is in the Python standard library.
+PyMuPDF==1.24.14     # PDF parsing (ingest, page). Not needed to run the tests.
+numpy==2.1.3         # embedding similarity
+# tomli_w (writing TOML) will be added in phase 6 when the chamber input wizard is built.

@@ -1,0 +1,114 @@
+# config.toml - every tunable lives here. Relative paths are relative to this file's folder.
+
+[lmstudio]
+base_url = "http://localhost:1234/v1"
+chat_model = "gemma-4-26b-a4b"            # model-agnostic: change the name only
+embedding_model = "text-embedding-nomic-embed-text-v1.5"
+temperature = 0.1
+timeout_s = 120
+doc_prefix = "search_document: "
+query_prefix = "search_query: "
+chat_timeout_s = 900
+
+[paths]
+db = "data/db/asme.sqlite"
+outputs = "outputs/chat"
+open_in_vscode = true                      # decided: true
+
+[retrieval]
+top_k = 5
+chunk_max_chars = 3000
+prompt_excerpt_chars = 1500
+prompt_total_chars = 14000
+
+[parser]
+header_fraction = 0.06
+footer_fraction = 0.06
+strip_patterns = []                        # EDIT HERE: regexes for licence / copyright lines
+
+[vision]
+enabled = true
+model = "gemma-4-26b-a4b"
+render_dpi = 150
+max_image_px = 1600
+max_figures_per_run = 50
+timeout_s = 180
+save_page_images = false
+debug_dir = "outputs/debug_images"
+repeat_reads = 2
+reading_tolerance_pct = 5.0
+resume = true
+
+[xref]
+max_depth = 1
+max_clauses = 40
+ask_when_larger_than = 40
+include_footnotes = true
+show_unexpanded = true
+write_pack_file = true
+prompt_to_expand = true
+prompt_max_items = 10          # level-1 items given to the chat model as extra excerpts
+
+[links]
+pdf_page_links = true
+pdf_base_dir = "data/pdfs"
+anchor_style = "#page={n}"                 # EDIT HERE: PDF viewers differ; test yours
+
+[serve]
+host = "127.0.0.1"
+port = 8765
+
+[eval]
+models = ["gemma-4-26b-a4b"]
+
+[[documents]]
+id = "viii1_2025"
+code = "ASME BPVC"
+division = "VIII-1"
+edition = 2025
+unit_system = "mixed"
+pdf_path = "data/pdfs/ASME BPVC VIII-1_2025.pdf"
+parser_profile = "code_book"
+
+[[documents]]
+id = "viii2_2025"
+code = "ASME BPVC"
+division = "VIII-2"
+edition = 2025
+unit_system = "mixed"
+pdf_path = "data/pdfs/ASME BPVC VIII-2_2025.pdf"
+parser_profile = "code_book"
+
+[[documents]]
+id = "iid_metric_2025"
+code = "ASME BPVC"
+division = "II-D"
+edition = 2025
+unit_system = "metric"
+pdf_path = "data/pdfs/ASME_BPVC_IIDM_2025.pdf"
+parser_profile = "materials_data"
+
+[[documents]]
+id = "iia_v1_2025"
+code = "ASME BPVC"
+division = "II-A"
+edition = 2025
+unit_system = "mixed"
+pdf_path = "data/pdfs/ASME_BPVC_IIVI_2025.pdf"   # file name is correct: II Vol-I
+parser_profile = "material_specs"
+
+[[documents]]
+id = "b16_5_2025"
+code = "ASME B16.5"
+edition = 2025
+unit_system = "mixed"
+pdf_path = "data/pdfs/B16_5_2025.pdf"
+parser_profile = "standard"
+
+[[documents]]
+id = "b36_10_2022"
+code = "ASME B36.10"
+edition = 2022
+unit_system = "mixed"
+pdf_path = "data/pdfs/B36_10_2022.pdf"
+parser_profile = "standard"

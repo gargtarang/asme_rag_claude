@@ -1,0 +1,12 @@
+# Copy to tests/eval_questions.toml and write questions from YOUR OWN PDFs.
+# expected_clause / expected_page must come from the real code, not from this example.
+
+[[question]]
+question = "Example: what does the code say about <topic>?"
+expected_clause = "UG-XX"        # clause you expect to be cited
+expected_page = 0                # optional PDF page (1-based); remove if not needed
+expect_not_found = false
+
+[[question]]
+question = "Example: a question the PDFs cannot answer"
+expect_not_found = true
