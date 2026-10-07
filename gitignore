@@ -1,0 +1,15 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# LICENSED ASME CONTENT - never commit
+data/pdfs/*.pdf
+data/db/
+outputs/
+reports/
+data/verified/*.csv
+
+# local files
+.env
+*.sqlite
